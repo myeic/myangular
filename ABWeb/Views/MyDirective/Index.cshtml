@@ -1,0 +1,105 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html ng-app="directiveApp">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="@Url.Content("~/Content/bootstrap/css/bootstrap.min.css")" type="text/css" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/bootstrap-additions/dist/bootstrap-additions.min.css")" type="text/css" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/font-awesome/css/font-awesome.min.css")" type="text/css" rel="stylesheet" />
+
+    <link href="@Url.Content("~/Content/ztree/css/zTreeStyle/zTreeStyle.css")" type="text/css" rel="stylesheet" />
+
+    <script src="@Url.Content("~/Scripts/jquery-2.1.4.js")"></script>
+    <script src="@Url.Content("~/Content/underscore/underscore-min.js")"></script>
+    <script src="@Url.Content("~/Content/bootstrap/js/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/angular.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/angular-animate.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/angular-sanitize.min.js")"></script>
+
+    <script src="@Url.Content("~/Content/ztree/js/jquery.ztree.all.min.js")"></script>
+
+    <script src="@Url.Content("~/Scripts/controller/myDirective.js")"></script>
+</head>
+<body>
+    <div ng-controller="defaultCtrl">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3>Products</h3>
+            </div>
+            <div class="panel-body">
+                <button class="btn btn-primary" ng-click="incrementPrices()">Change Prices</button>
+            </div>
+            <div class="panel-body">
+                Content will go here
+                <div data-unorder-list="products" data-list-property="price|currency" ></div>
+            </div>
+
+            <style>
+                .bold{ font-weight:bold;}
+            </style>
+            <div class="panel-body">
+                <div data-demo-directive>
+                    <button class="btn btn-primary">Click Me</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row alert alert-info">
+            @*<button ng-click="loadTree()">Load Tree</button>*@
+            
+            <div class="col-md-4">
+                <ul data-yl-tree 
+                    data-tree-dataset="treeDataset"
+                    data-isload="1"
+                    ng-model="treeNode"
+                    id="treeDemo" class="ztree"></ul>
+            </div>
+            <div class="col-md-8">
+                <div>
+                    <button ng-click="addNode()">AddNode</button>
+                    <button ng-click="updateNode()">EditNode</button>
+                    <button ng-click="removeNode()">RemoveNode</button>
+                </div>
+                <strong>{{treeNode|json}}</strong>
+            </div>
+            <ul>
+                <li data-simple-repeater data-source="treeDataset" data-item-name="item">
+                    <span>{{item.name}}</span>
+                </li>
+            </ul>
+        </div>
+
+
+
+        <div>
+            <tri-button ng-model="dataValue"></tri-button>
+        </div>
+        <div class="well">
+            value:
+            <select ng-model="dataValue">
+                <option>Yes</option>
+                <option>No</option>
+                <option>Not Sure</option>
+                <option>Huh?</option>
+            </select>
+        </div>
+    </div>
+
+
+
+    <script type="text/ng-template" id="triTemplate">
+       <div class="well">
+           <div class="btn-group">
+               <button class="btn btn-default">Yes</button>
+               <button class="btn btn-default">No</button>
+               <button class="btn btn-default">Not Sure</button>
+           </div>
+       </div>
+    </script>
+</body>
+</html>

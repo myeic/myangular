@@ -1,0 +1,255 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html ng-app="myXeditableApp">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>My Angular XEditable App</title>
+    <link href="@Url.Content("~/Content/bootstrap/css/bootstrap.min.css")" type="text/css" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/angular-motion/dist/angular-motion.min.css")" type="text/css" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/bootstrap-additions/dist/bootstrap-additions.min.css")" type="text/css" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/font-awesome/css/font-awesome.min.css")" type="text/css" rel="stylesheet" />
+
+    <link href="@Url.Content("~/Content/angular-xeditable/dist/css/xeditable.css")" type="text/css" rel="stylesheet" />
+
+    <script src="@Url.Content("~/Scripts/jquery-2.1.4.js")"></script>
+    <script src="@Url.Content("~/Content/bootstrap/js/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/angular.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/angular-route.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/angular-animate.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/angular-sanitize.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/checklist-model.js")"></script>
+
+    <script src="@Url.Content("~/Scripts/angular-ui/ui-bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/angular-ui/ui-bootstrap-tpls.min.js")"></script>
+
+    <script src="@Url.Content("~/Content/angular-strap/dist/angular-strap.min.js")"></script>
+    <script src="@Url.Content("~/Content/angular-strap/dist/angular-strap.tpl.min.js")"></script>
+
+    <script src="@Url.Content("~/Content/angular-xeditable/dist/js/xeditable.min.js")"></script>
+
+    <script src="@Url.Content("~/Scripts/controller/myXeditableApp.js")"></script>
+</head>
+<body>
+    <div class="row">
+        <h1 class="text-danger">
+            欢迎来到Angular EXeditable的世界!
+        </h1>
+    </div>
+    <section class="row" ng-controller="TextSimpleCtrl">
+        <div class="col-md-4"> 
+            <h3 class="text-primary">Text Simple</h3>
+        </div>
+        <div class="col-md-8">
+            <a href="#" data-editable-text="user.name">{{ user.name || 'empty' }}</a>
+        </div>
+    </section>
+    <section class="row" ng-controller="SelectLocalCtrl">
+        <div class="col-md-4">
+            <h3 class="text-primary">Select local</h3>
+        </div>
+        <div class="col-md-8">
+            <a href="#" data-editable-select="user.status" data-e-ng-options="s.value as s.text for s in statuses">
+                {{ showStatus() }}
+            </a>
+        </div>
+    </section>
+    <section class="row" ng-controller="SelectRemoteCtrl">
+        <div class="col-md-4">
+            <h3 class="text-primary"> Select Remote</h3>
+        </div>
+        <div class="col-md-8">
+            <a href="#" data-editable-select="user.group" onshow="loadGroups()" data-e-ng-options="g.id as g.text for g in groups">
+                {{ user.groupName || 'not set' }}
+            </a>
+        </div>
+    </section>
+
+    <section class="row" ng-controller="Html5InputsCtrl">
+        <div class="col-md-4">
+            <h3 class="text-primary"></h3>
+        </div>
+        <div class="col-md-8">
+            <div>Email: <a href="#" data-editable-email="user.email">{{ user.email || 'empty' }}</a></div>
+            <div>Tel: <a href="#" data-editable-tel="user.tel" data-e-pattern="\d{3}\-\d{2}\-\d{2}" data-e-title="xxx-xx-xx">{{ user.tel || 'empty' }}</a></div>
+            <div>Number: <a href="#" data-editable-number="user.number" data-e-min="18">{{ user.number || 'empty' }}</a></div>
+            <div>Range: <a href="#" data-editable-range="user.range" data-e-step="5">{{ user.range || 'empty' }}</a></div>
+            <div>Url: <a href="#" data-editable-url="user.url">{{ user.url || 'empty' }}</a></div>
+            <div>Search: <a href="#" data-editable-search="user.search">{{ user.search || 'empty' }}</a></div>
+            <div>Color: <a href="#" data-editable-color="user.color">{{ user.color || 'empty' }}</a></div>
+            <div>Date: <a href="#" data-editable-date="user.date">{{ user.date || 'empty' }}</a></div>
+            <div>Time: <a href="#" data-editable-time="user.time">{{ user.time || 'empty' }}</a></div>
+            <div>Datetime: <a href="#" data-editable-datetime="user.datetime">{{ user.datetime || 'empty' }}</a></div>
+            <div>Month: <a href="#" data-editable-month="user.month">{{ user.month || 'empty' }}</a></div>
+            <div>Week: <a href="#" data-editable-week="user.week">{{ user.week || 'empty' }}</a></div>
+        </div>
+    </section>
+    <section class="row" ng-controller="TextareaCtrl">
+        <div class="col-md-4">
+            <h3 class="text-primary">Textarea</h3>
+        </div>
+        <div class="col-md-8">
+            <a href="#" data-editable-textarea="user.desc" data-e-rows="7" data-e-cols="40">
+                <pre>{{ user.desc || 'no description' }}</pre>
+            </a>
+        </div>
+    </section>
+
+    <section class="row" ng-controller="CheckboxCtrl">
+        <div class="col-md-4">
+            <h3 class="text-primary">Checkbox</h3>
+        </div>
+        <div class="col-md-8">
+            <a href="#" data-editable-checkbox="user.remember" data-e-title="Remember?">
+                {{ user.remember && "Remember me!" || "Don't remember" }}
+            </a>
+        </div>
+    </section>
+    <section class="row" ng-controller="ChecklistCtrl">
+        <div class="col-md-4">
+            <h3 class="text-primary">checklist</h3>
+        </div>
+        <div class="col-md-8">
+            <a href="#" data-editable-checklist="user.status" data-e-ng-options="s.value as s.text for s in statuses">
+                {{ showStatus() }}
+            </a>
+        </div>
+    </section>
+    <section class="row" ng-controller="RadiolistCtrl">
+        <div class="col-md-4">
+            <h3 class="text-primary">radiolist</h3>
+        </div>
+        <div class="col-md-8">
+            <a href="#" data-editable-radiolist="user.status" data-e-ng-options="s.value as s.text for s in statuses">
+                {{ showStatus() }}
+            </a>
+        </div>
+    </section>
+
+    <section class="row" ng-controller="TypeaheadCtrl">
+        <div class="col-md-4">
+            <h3 class="text-primary">Typeahead</h3>
+        </div>
+        <div class="col-md-8">
+            <a href="#" data-editable-text="user.state" data-e-typeahead="state for state in states | filter:$viewValue | limitTo:8">
+                {{ user.state || 'empty' }}
+            </a>
+        </div>
+    </section>
+    <section class="row" ng-controller="SelectMultipleCtrl">
+        <div class="col-md-4">
+            <h3 class="text-primary">select multiple</h3>
+        </div>
+        <div class="col-md-8">
+            <a href="#" data-editable-select="user.status" data-e-multiple data-e-ng-options="s.value as s.text for s in statuses">
+                {{ showStatus() }}
+            </a>
+        </div>
+    </section>
+    <section class="row" ng-controller="ValidateLocalCtrl">
+        <div class="col-md-4">
+            <h3 class="text-primary">validate local</h3>
+        </div>
+        <div class="col-md-8">
+            <a href="#" data-editable-text="user.name" data-onbeforesave="checkName($data)">
+                {{ user.name || 'empty' }}
+            </a>
+        </div>
+    </section>
+    <section class="row" ng-controller="ValidateRemoteCtrl">
+        <div class="col-md-4">
+            <h3 class="text-primary">validate remote</h3>
+        </div>
+        <div class="col-md-8">
+            <a href="#" data-editable-text="user.name" data-onbeforesave="checkName($data)">
+                {{ user.name || 'empty' }}
+            </a>
+        </div>
+    </section>
+
+    <section class="row" ng-controller="OnbeforesaveCtrl">
+        <div class="col-md-4">
+            <h3 class="text-primary">Submit onbefore save</h3>
+        </div>
+        <div class="col-md-8">
+            <a href="#" data-editable-text="user.name" data-onbeforesave="updateUser($data)">
+                {{ user.name || 'empty' }}
+            </a>
+        </div>
+    </section>
+
+    <section class="row" ng-controller="EditableFormCtrl">
+        <div class="col-md-4">
+            <h3 class="text-primary">Edit form</h3>
+        </div>
+        <div class="col-md-8">
+            <form data-editable-form name="editableForm" data-onaftersave="saveUser()">
+                <div>
+                    <!-- editable username (text with validation) -->
+                    <span class="title">User name: </span>
+                    <span data-editable-text="user.name" data-e-name="name" data-onbeforesave="checkName($data)" data-e-required>{{ user.name || 'empty' }}</span>
+                </div>
+
+                <div>
+                    <!-- editable status (select-local) -->
+                    <span class="title">Status: </span>
+                    <span data-editable-select="user.status" data-e-name="status" data-e-ng-options="s.value as s.text for s in statuses">
+                        {{ (statuses | filter:{value: user.status})[0].text || 'Not set' }}
+                    </span>
+                </div>
+
+                <div>
+                    <!-- editable group (select-remote) -->
+                    <span class="title">Group: </span>
+                    <span data-editable-select="user.group" data-e-name="group" onshow="loadGroups()" data-e-ng-options="g.id as g.text for g in groups">
+                        {{ showGroup() }}
+                    </span>
+                </div>
+
+                <div class="buttons">
+                    <!-- button to show form -->
+                    <button type="button" class="btn btn-default" ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
+                        Edit
+                    </button>
+                    <!-- buttons to submit / cancel form -->
+                    <span ng-show="editableForm.$visible">
+                        <button type="submit" class="btn btn-primary" ng-disabled="editableForm.$waiting">
+                            Save
+                        </button>
+                        <button type="button" class="btn btn-default" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">
+                            Cancel
+                        </button>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </section>
+    <section class="row">
+        <div class="col-md-4">
+            <h3 class="text-primary"></h3>
+        </div>
+        <div class="col-md-8">
+
+        </div>
+    </section>
+    <section class="row">
+        <div class="col-md-4">
+            <h3 class="text-primary"></h3>
+        </div>
+        <div class="col-md-8">
+
+        </div>
+    </section>
+    <section class="row">
+        <div class="col-md-4">
+            <h3 class="text-primary"></h3>
+        </div>
+        <div class="col-md-8">
+
+        </div>
+    </section>
+</body>
+</html>

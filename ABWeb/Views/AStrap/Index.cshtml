@@ -1,0 +1,793 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html ng-app="myAstrapApp">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>My AngularStrap App</title>
+    @*<link href="@Url.Content("~/Content/bootstrap-metro/dist/css/metro-bootstrap.min.css")" type="text/css" rel="stylesheet" />*@
+
+    <link href="@Url.Content("~/Content/bootstrap/css/bootstrap.min.css")" type="text/css" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/angular-motion/dist/angular-motion.min.css")" type="text/css" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/bootstrap-additions/dist/bootstrap-additions.min.css")" type="text/css" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/font-awesome/css/font-awesome.min.css")" type="text/css" rel="stylesheet" />
+
+    <script src="@Url.Content("~/Scripts/jquery-2.1.4.js")"></script>
+    <script src="@Url.Content("~/Content/bootstrap/js/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/angular.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/angular-route.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/angular-animate.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/angular-sanitize.min.js")"></script>
+
+    <script src="@Url.Content("~/Content/angular-strap/dist/angular-strap.min.js")"></script>
+    <script src="@Url.Content("~/Content/angular-strap/dist/angular-strap.tpl.min.js")"></script>
+
+    <script src="@Url.Content("~/Scripts/controller/myAstrapApp.js")"></script>
+</head>
+<body>
+    <div class="row">
+        <h1>
+            欢迎来到Angular Strap的世界!
+        </h1>
+    </div>
+    <section class="row" ng-controller="ModalDemoCtrl">
+        <div class="col-md-4">
+            <h3 class="text-success">AangularStrap Modal 的例子</h3>
+        </div>
+        <div class="col-md-8">
+            <div class="page-header">
+                <h1 id="modals">
+                    Modals <a class="small" href="//github.com/mgcrea/angular-strap/blob/master/src/modal/modal.js" target="_blank">modal.js</a>
+                </h1>
+                <code>mgcrea.ngStrap.modal</code>
+            </div>
+            <h2 id="modals-examples">Examples</h2>
+            <p>Modals are streamlined, but flexible, dialog prompts with the minimum required functionality and smart defaults.</p>
+
+            <h3>Live demo <a class="small edit-plunkr" data-module-name="mgcrea.ngStrapDocs" data-content-html-url="modal/docs/modal.demo.html" data-content-js-url="modal/docs/modal.demo.js" ng-plunkr data-title="edit in plunker" data-placement="right" data-bs-tooltip>clog.info</a></h3>
+            <pre class="bs-example-scope">$scope.modal = {{modal | json}};</pre>
+            <div class="bs-example" style="padding-bottom: 24px;" data-append-source>
+
+                <!-- Button to trigger a default modal with a scope as an object {title:'', content:'', etc.} -->
+                <button type="button" class="btn btn-lg btn-primary" data-animation="am-fade-and-scale" data-placement="center" data-bs-modal="modal">
+                    Click to toggle modal
+                    <br />
+                    <small>(using an object)</small>
+                </button>
+                <!-- You can use a custom html template with the `data-template` attr -->
+                <button type="button" class="btn btn-lg btn-danger" data-animation="am-fade-and-slide-top" data-template-url="@Url.Action("ModalTplView","AStrap")" data-bs-modal="modal">
+                    Custom Modal
+                    <br />
+                    <small>(using data-template)</small>
+                </button>
+
+                <!-- You can use a custom html template with the `data-template` attr -->
+                <button type="button" class="btn btn-lg btn-danger" ng-click="showModal()">
+                    Modal
+                    <br />
+                    <small>(using service)</small>
+                </button>
+
+
+            </div>
+        </div>
+    </section>
+    <section class="row" ng-controller="AsideDemoCtrl">
+        <div class="col-md-4">
+            <h3 class="text-success">AangularStrap Asides 的例子</h3>
+        </div>
+        <div class="col-md-8">
+            <div class="page-header">
+                <h1 id="asides">
+                    Asides <a class="small" href="//github.com/mgcrea/angular-strap/blob/master/src/aside/aside.js" target="_blank">aside.js</a>
+                </h1>
+                <code>mgcrea.ngStrap.aside</code>
+            </div>
+            <h2 id="asides-examples">Examples</h2>
+            <p>Asides are custom panels, drawers that inherit the behavior of modals.</p>
+
+            <h3>Live demo <a class="small edit-plunkr" data-module-name="mgcrea.ngStrapDocs" data-content-html-url="aside/docs/aside.demo.html" data-content-js-url="aside/docs/aside.demo.js" ng-plunkr data-title="edit in plunker" data-placement="right" data-bs-tooltip></a></h3>
+            <pre class="bs-example-scope">$scope.aside = {{aside | json}};</pre>
+            <div class="bs-example" data-append-source>
+
+                <!-- Button to trigger a default aside with a scope as an object {title:'', content:'', etc.} -->
+                <button type="button" class="btn btn-lg btn-primary" data-bs-aside="aside">
+                    Click to toggle aside
+                    <br />
+                    <small>(using an object)</small>
+                </button>
+
+                <!-- You can use a custom html template with the `data-template` attr -->
+                <button type="button" class="btn btn-lg btn-danger" data-template-url="@Url.Action("AsideTplView","AStrap")" data-placement="left" data-animation="am-slide-left" data-bs-aside="aside" data-container="body">
+                    Custom aside
+                    <br />
+                    <small>(using data-template)</small>
+                </button>
+
+            </div>
+
+        </div>
+    </section>
+    <section class="row" ng-controller="AlertDemoCtrl">
+        <div class="col-md-4">
+            <h3 class="text-success">AangularStrap Alert 的例子</h3>
+        </div>
+        <div class="col-md-8">
+            <div class="page-header">
+                <h1 id="alerts">
+                    Alerts <a class="small" href="//github.com/mgcrea/angular-strap/blob/master/src/alert/alert.js" target="_blank">alert.js</a>
+                </h1>
+                <code>mgcrea.ngStrap.alert</code>
+            </div>
+
+
+            <h2 id="alerts-examples">Examples</h2>
+            <p>Alerts are styled tiny dialogs that inherit the behavior of modals.</p>
+
+            <div class="callout callout-danger">
+                <h4>Plugin dependency</h4>
+                <p>Alerts require the <a href="#modals">modal plugin</a> to be included.</p>
+            </div>
+
+            <h3>Live demo <a class="small edit-plunkr" data-module-name="mgcrea.ngStrapDocs" data-content-html-url="alert/docs/alert.demo.html" data-content-js-url="alert/docs/alert.demo.js" ng-plunkr data-title="edit in plunker" data-placement="right" data-bs-tooltip>clog.info</a></h3>
+            <pre class="bs-example-scope">$scope.alert = {{alert | json}};</pre>
+            <div class="bs-example" style="padding-bottom: 24px;" data-append-source>
+
+                <!-- Button to trigger a default alert with a scope as an object {title:'', content:'', etc.} -->
+                <button class="btn btn-lg btn-primary" data-placement="top-right" data-container="body" data-duration="3" data-bs-alert="alert">
+                    Click to toggle alert
+                    <br />
+                    <small>(using an object)</small>
+                </button>
+
+                <!-- You can also use data-attrs to assign scope variables -->
+                <button class="btn btn-lg btn-primary" title="{{alert.title}}" data-content="{{alert.content}}" data-type="success" data-container="#alerts-container" data-bs-alert>
+                    Click to toggle alert
+                    <br />
+                    <small>(using data-attrs)</small>
+                </button>
+
+                <!-- You can use a custom html template with the `data-template` attr -->
+                <button class="btn btn-lg btn-danger" data-template-url="@Url.Action("AlertTplView", "AStrap")" data-placement="top" data-duration="3" data-animation="am-fade-and-slide-top" data-container="body" data-keyboard="true" data-bs-alert="alert">
+                    Custom alert
+                    <br />
+                    <small>(using data-template)</small>
+                </button>
+                <!-- Element container to append the first alert -->
+                <hr>
+                <div id="alerts-container"></div>
+            </div>
+        </div>
+    </section>
+    <section class="row" ng-controller="TooltipDemoCtrl">
+        <div class="col-md-4">
+            <h3 class="text-success">AangularStrap Tooltip 的例子</h3>
+        </div>
+        <div class="col-md-8">
+            <div class="page-header">
+                <h1 id="tooltips">
+                    Tooltips <a class="small" href="//github.com/mgcrea/angular-strap/blob/master/src/tooltip/tooltip.js" target="_blank">tooltip.js</a>
+                </h1>
+                <code>mgcrea.ngStrap.tooltip</code>
+            </div>
+
+
+            <h2 id="tooltips-examples">Examples</h2>
+            <p>Add small overlays of content on hover, to any element for housing secondary information.</p>
+
+            <div class="callout callout-warning">
+                <h4>Plugin dependency</h4>
+                <p>Tooltip require the <a href="//github.com/mgcrea/angular-strap/blob/master/src/helpers/dimensions.js" target="_blank">helpers.dimensions</a> module to be loaded.</p>
+            </div>
+
+            <h3>Live demo <a class="small edit-plunkr" data-module-name="mgcrea.ngStrapDocs" data-content-html-url="tooltip/docs/tooltip.demo.html" data-content-js-url="tooltip/docs/tooltip.demo.js" ng-plunkr data-title="edit in plunker" data-placement="right" data-bs-tooltip>clog.info</a></h3>
+            <div class="form-group hide">
+                <label>Title</label>
+                <input type="text" class="form-control" ng-model="tooltip.title" placeholder="Title">
+            </div>
+            <pre class="bs-example-scope">$scope.tooltip = {{tooltip | json}};</pre>
+            <div class="bs-example" style="padding-bottom: 24px;" data-append-source>
+
+                <!-- Markup for a default tooltip with a scope passed as an object {title:''} -->
+                <p>Tight pants next level keffiyeh <a href="" data-animation="am-flip-x" data-bs-tooltip="tooltip">you probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown.</p>
+
+                <div class="input-group col-xs-5">
+                    <span class="input-group-btn">
+                        <!-- You can also use data-attrs to assign scope variables -->
+                        <button class="btn btn-primary" type="button" data-trigger="click" data-type="success" data-title="{{tooltip.title}}" data-bs-tooltip>Click me</button>
+                    </span>
+                    <input type="text" class="form-control" data-placement="right" data-type="info" data-container="body" placeholder="Focus to toggle tooltip" data-trigger="focus" data-bs-tooltip="tooltip">
+                </div>
+                <div class="checkbox">
+                    <label data-placement="bottom-left" data-type="info" data-animation="am-fade-and-scale" data-bs-tooltip="tooltip" data-bs-enabled="tooltip.checked">
+                        <input type="checkbox" ng-model="tooltip.checked"> Check me to enable my tooltip
+                    </label>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="row" ng-controller="PopoverDemoCtrl">
+        <div class="col-sm-4">
+            <h3 class="text-success">AangularStrap Popover 的例子</h3>
+        </div>
+        <div class="col-sm-8">
+            <div class="page-header">
+                <h1 id="popovers">
+                    Popovers <a class="small" href="//github.com/mgcrea/angular-strap/blob/master/src/popover/popover.js" target="_blank">popover.js</a>
+                </h1>
+                <code>mgcrea.ngStrap.popover</code>
+            </div>
+
+
+            <h2 id="popovers-examples">Examples</h2>
+            <p>Add small overlays of content on tap, like those on the iPad, to any element for housing secondary information.</p>
+
+            <div class="callout callout-danger">
+                <h4>Plugin dependency</h4>
+                <p>Popovers require the <a href="#tooltips">tooltip module</a> to be loaded.</p>
+            </div>
+
+            <h3>Live demo <a class="small edit-plunkr" data-module-name="mgcrea.ngStrapDocs" data-content-html-url="popover/docs/popover.demo.html" data-content-js-url="popover/docs/popover.demo.js" ng-plunkr data-title="edit in plunker" data-placement="right" data-bs-tooltip>clog.info</a></h3>
+            <div class="form-group hide">
+                <label>Title</label>
+                <input type="text" class="form-control" ng-model="popover.title" placeholder="Title">
+                <label>Content</label>
+                <textarea class="form-control" ng-model="popover.content" rows="3"></textarea>
+            </div>
+            <pre class="bs-example-scope">$scope.popover = {{popover | json}};</pre>
+            <div class="bs-example" style="padding-bottom: 24px;" data-append-source>
+                <!-- Button to trigger a default popover with a scope as an object {title:'', content:'', etc.} -->
+                <button type="button" class="btn btn-lg btn-primary" data-placement="bottom" data-animation="am-flip-x" data-bs-popover="popover">
+                    Click to toggle popover
+                    <br />
+                    <small>(using an object)</small>
+                </button>
+
+                <!-- You can also use data-attrs to assign scope variables -->
+                <button type="button" class="btn btn-lg btn-primary" data-placement="top-right" title="{{popover.title}}" data-content="{{popover.content}}" data-trigger="focus" data-bs-popover>
+                    Click to toggle popover
+                    <br />
+                    <small>(using data-attrs)</small>
+                </button>
+
+                <!-- You can use a custom html template with the `data-template` attr -->
+                <button type="button" class="btn btn-lg btn-danger" title="{{popover.title}}" data-content="{{popover.content}}" data-template-url="@Url.Action("PopoverTplView","AStrap")" data-animation="am-flip-x" data-auto-close="1" data-bs-popover>
+                    Custom Popover
+                    <br />
+                    <small>(using data-template)</small>
+                </button>
+
+                <!-- A popover can also be triggered programmatically using the $popover service -->
+                <button type="button" id="popover-as-service" class="btn btn-lg btn-primary" title="{{popover.title}}" ng-click="togglePopover()">
+                    Click to toggle popover
+                    <br />
+                    <small>(using $popover service)</small>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="row" ng-controller="TypeaheadDemoCtrl">
+        <div class="col-md-4">
+            <h3 class="text-success">AangularStrap Typeahead 的例子</h3>
+        </div>
+        <div class="col-md-8">
+            <div class="page-header">
+                <h1 id="typeaheads">
+                    Typeaheads <a class="small" href="//github.com/mgcrea/angular-strap/blob/master/src/typeahead/typeahead.js" target="_blank">typeahead.js</a>
+                </h1>
+                <code>mgcrea.ngStrap.typeahead</code>
+            </div>
+
+
+            <h2 id="typeaheads-examples">Examples</h2>
+            <p>Add quick, dynamic typeahead functionality with any form text input.</p>
+
+            <div class="callout callout-danger">
+                <h4>Plugin dependency</h4>
+                <p>Selects require the <a href="#tooltips">tooltip module</a> and <a href="//github.com/mgcrea/angular-strap/blob/master/src/helpers/parse-options.js" target="_blank">parseOptions helper</a> module to be loaded.</p>
+            </div>
+
+            <h3>Live demo <a class="small edit-plunkr" data-module-name="mgcrea.ngStrapDocs" data-content-html-url="typeahead/docs/typeahead.demo.html" data-content-js-url="typeahead/docs/typeahead.demo.js" ng-plunkr data-title="edit in plunker" data-placement="right" data-bs-tooltip></a></h3>
+            <pre class="bs-example-scope">$scope.selectedState = "{{selectedState}}";
+                      $scope.states = {{states}};
+                      $scope.selectedIcon = "{{selectedIcon}}";
+                      $scope.icons = "{{icons}}";
+                      $scope.selectedAddress = "{{selectedAddress}}";
+            </pre>
+            <div class="bs-example" style="padding-bottom: 24px;" data-append-source>
+                <form class="form-inline" role="form">
+                    <div class="form-group">
+                        <label><i class="fa fa-globe"></i> State</label>
+                        <input type="text" class="form-control" ng-model="selectedState" data-bs-options="state for state in states" placeholder="Enter state" data-bs-typeahead>
+                    </div>
+                    <div class="form-group">
+                        <label>Icon</label>
+                        <input type="text" class="form-control" ng-model="selectedIcon" data-min-length="0" data-html="1" data-auto-select="true" data-animation="am-flip-x" data-bs-options="icon as icon.label for icon in icons" placeholder="Enter icon" data-bs-typeahead>
+                    </div>
+                    <hr>
+                    <!-- Using an async data provider -->
+                    <div class="form-group">
+                        <label><i class="fa fa-home"></i> Address <small>(async via maps.googleapis.com)</small></label>
+                        <input type="text" class="form-control" ng-model="selectedAddress" data-animation="am-flip-x" data-bs-options="address.formatted_address as address.formatted_address for address in getAddress($viewValue)" placeholder="Enter address" data-bs-typeahead>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="row" ng-controller="DatepickerDemoCtrl">
+        <div class="col-md-4">
+            <h3 class="text-success">AangularStrap Datepicker 的例子</h3>
+        </div>
+        <div class="col-md-8">
+            <div class="page-header">
+                <h1 id="datepickers">
+                    Datepickers <a class="small" href="//github.com/mgcrea/angular-strap/blob/master/src/datepicker/datepicker.js" target="_blank">datepicker.js</a>
+                </h1>
+                <code>mgcrea.ngStrap.datepicker</code>
+            </div>
+
+
+            <h2 id="datepickers-examples">Examples</h2>
+            <p>Add datepicker functionality with any form text input.</p>
+
+            <div class="callout callout-danger">
+                <h4>Plugin dependency</h4>
+                <p>Datepickers require the <a href="#tooltips">tooltip module</a> and <a href="//github.com/mgcrea/angular-strap/blob/master/src/helpers/date-parser.js" target="_blank">dateParser helper</a> module to be loaded.</p>
+                <p>These docs currently use <a href="//github.com/mgcrea/bootstrap-additions/blob/master/src/datepicker/datepicker.less" target="_blank">bootstrap-additions</a> for styling purposes.</p>
+            </div>
+
+            <div class="callout callout-info">
+                <h4>Support for locales</h4>
+                <p>This module leverages the <a href="http://docs.angularjs.org/api/ng.$locale">$locale</a> service. You just have to load the proper <a href="http://docs.angularjs.org/guide/i18n">i18n</a> file to seamlessly translate your datepickers.</p>
+            </div>
+
+            <h3>Live demo <a class="small edit-plunkr" data-module-name="mgcrea.ngStrapDocs" data-content-html-url="datepicker/docs/datepicker.demo.html" data-content-js-url="datepicker/docs/datepicker.demo.js" ng-plunkr data-placement="right" data-bs-tooltip></a></h3>
+            <pre class="bs-example-scope">$scope.selectedDate = {{selectedDate}}; // &lt;- {{ getType('selectedDate') }}
+$scope.selectedDateAsNumber = {{selectedDateAsNumber}}; // &lt;- {{ getType('selectedDateAsNumber') }}
+$scope.fromDate = {{fromDate}}; // &lt;- {{ getType('fromDate') }}
+$scope.untilDate = {{untilDate}}; // &lt;- {{ getType('untilDate') }}
+</pre>
+            <div class="bs-example" style="padding-bottom: 24px;" data-append-source>
+                <form name="datepickerForm" class="form-inline" role="form">
+                    <!-- Basic example -->
+                    <div class="form-group" ng-class="{'has-error': datepickerForm.date.$invalid}">
+                        <label class="control-label"><i class="fa fa-calendar"></i> Date <small>(as date)</small></label>
+                        <input type="text" class="form-control" ng-model="selectedDate" name="date" data-bs-datepicker>
+                    </div>
+                    <!-- Custom example -->
+                    <div class="form-group" ng-class="{'has-error': datepickerForm.date2.$invalid}">
+                        <label class="control-label"><i class="fa fa-calendar"></i> Date <small>(as number)</small></label>
+                        <input type="text" class="form-control" ng-model="selectedDateAsNumber" data-date-format="yyyy-MM-dd" data-date-type="number" data-min-date="02/10/86" data-max-date="today" data-autoclose="1" name="date2" data-bs-datepicker>
+                    </div>
+                    <hr>
+                    <!-- Date range example -->
+                    <div class="form-group">
+                        <label class="control-label"><i class="fa fa-calendar"></i> <i class="fa fa-arrows-h"></i> <i class="fa fa-calendar"></i> Date range <small>(dynamic)</small></label><br>
+                        <div class="form-group col-xs-6">
+                            <input type="text" class="form-control" ng-model="fromDate" data-max-date="{{untilDate}}" placeholder="From" data-bs-datepicker>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <input type="text" class="form-control" ng-model="untilDate" data-min-date="{{fromDate}}" placeholder="Until" data-bs-datepicker>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="row" ng-controller="TimepickerDemoCtrl">
+        <div class="col-md-4">
+            <h3 class="text-success">AangularStrap Timepicker 的例子</h3>
+        </div>
+        <div class="col-md-8">
+            <div class="page-header">
+                <h1 id="timepickers">
+                    Timepickers <a class="small" href="//github.com/mgcrea/angular-strap/blob/master/src/timepicker/timepicker.js" target="_blank">timepicker.js</a>
+                </h1>
+                <code>mgcrea.ngStrap.timepicker</code>
+            </div>
+
+
+            <h2 id="timepickers-examples">Examples</h2>
+            <p>Add quick, dynamic timepicker functionality with any form text input.</p>
+
+            <div class="callout callout-danger">
+                <h4>Plugin dependency</h4>
+                <p>Timepickers require the <a href="#tooltips">tooltip module</a> and <a href="//github.com/mgcrea/angular-strap/blob/master/src/helpers/date-parser.js" target="_blank">dateParser helper</a> module to be loaded.</p>
+                <p>Theses docs currently use <a href="//github.com/mgcrea/bootstrap-additions/blob/master/src/timepicker/timepicker.less" target="_blank">bootstrap-additions</a> for styling purposes.</p>
+            </div>
+
+            <div class="callout callout-info">
+                <h4>Support for locales</h4>
+                <p>This module leverages the <a href="http://docs.angularjs.org/api/ng.$locale">$locale</a> service. You just have to load the proper <a href="http://docs.angularjs.org/guide/i18n">i18n</a> file to seamlessly translate your timepickers.</p>
+            </div>
+
+            <h3>Live demo <a class="small edit-plunkr" data-module-name="mgcrea.ngStrapDocs" data-content-html-url="timepicker/docs/timepicker.demo.html" data-content-js-url="timepicker/docs/timepicker.demo.js" ng-plunkr data-title="edit in plunker" data-placement="right" data-bs-tooltip></a></h3>
+            <pre class="bs-example-scope">$scope.time = {{time}}; // (formatted: {{time | date:'shortTime'}})
+$scope.selectedTimeAsNumber = {{selectedTimeAsNumber}}; // (formatted: {{selectedTimeAsNumber | date:'shortTime'}})
+$scope.sharedDate = {{sharedDate}}; // (formatted: {{sharedDate | date:'short'}})
+  </pre>
+            <div class="bs-example" style="padding-bottom: 24px;" data-append-source>
+                <form name="timepickerForm" class="form-inline" role="form">
+
+                    <!-- Basic example -->
+                    <div class="form-group" ng-class="{'has-error': timepickerForm.time.$invalid}">
+                        <label class="control-label"><i class="fa fa-clock-o"></i> Time <small>(as date)</small></label>
+                        <input type="text" class="form-control" size="8" ng-model="time" name="time" data-bs-timepicker>
+                    </div>
+
+                    <!-- Custom example -->
+                    <div class="form-group" ng-class="{'has-error': timepickerForm.time2.$invalid}">
+                        <label class="control-label"><i class="fa fa-clock-o"></i> Time <small>(as number)</small></label>
+                        <input type="text" class="form-control" size="8" ng-model="selectedTimeAsNumber" data-time-format="HH:mm:ss"
+                               data-time-type="number" data-min-time="10:00:00" data-max-time="13:30:00" data-autoclose="1" name="time2" data-bs-timepicker>
+                    </div>
+                    <hr>
+
+                    <!-- Time picker with arrows example -->
+                    <div class="form-group">
+                        <label class="control-label"><i class="fa fa-clock-o"></i> Time picker with arrows</label><br>
+                        <div class="form-group">
+                            <input type="text" class="form-control" size="8" ng-model="time" name="time" data-bs-timepicker
+                                   data-time-format="HH:mm" data-length="1" data-minute-step="1" data-arrow-behavior="picker">
+                        </div>
+                    </div>
+                    <hr>
+
+                    <!-- Datetime example -->
+                    <div class="form-group">
+                        <label class="control-label"><i class="fa fa-calendar"></i> Datetime picker</label><br>
+                        <div class="form-group">
+                            <input type="text" size="10" class="form-control" ng-model="sharedDate" data-autoclose="1" placeholder="Date" data-bs-datepicker>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" size="8" class="form-control" ng-model="sharedDate" data-time-format="h:mm:ss a" data-autoclose="1" placeholder="Time" data-bs-timepicker>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="row" ng-controller="ButtonDemoCtrl">
+        <div class="col-md-4">
+            <h3 class="text-success">AangularStrap Button 的例子</h3>
+        </div>
+        <div class="col-md-8">
+            <div class="page-header">
+                <h1 id="buttons">
+                    Buttons <a class="small" href="//github.com/mgcrea/angular-strap/blob/master/src/button/button.js" target="_blank">button.js</a>
+                </h1>
+                <code>mgcrea.ngStrap.button</code>
+            </div>
+
+
+            <h2 id="buttons-examples">Examples</h2>
+            <p>Do more with buttons. Control button states or create groups of buttons for more components like toolbars.</p>
+            <p>This modules exposes two directives: <code>bs-checkbox</code> and <code>bs-radio</code> that can be used as attributes to trigger toggle, checkbox or radio behavior.</p>
+            <div class="callout callout-info">
+                <h4>Group directives are also available as shortcuts</h4>
+                <p>Use <code>bs-checkbox-group</code> and <code>bs-radio-group</code> to easily setup the proper markup at compile time.</p>
+            </div>
+
+            <h3 id="buttons-usage">Live demo <a class="small edit-plunkr" data-module-name="mgcrea.ngStrapDocs" data-content-html-url="button/docs/button.demo.html" data-content-js-url="button/docs/button.demo.js" ng-plunkr data-title="edit in plunker" data-placement="right" data-bs-tooltip>clog.info</a></h3>
+
+            <pre class="bs-example-scope">$scope.button = {{button | json}};</pre>
+            <div class="bs-example" style="padding-bottom: 24px;" data-append-source>
+
+                <label>Toggle:</label>
+                <button type="button" class="btn btn-default" ng-model="button.toggle" data-bs-checkbox>Toggle</button>
+                <!-- You can also use custom values with the `data-true-value` & `data-false-value` attributes -->
+
+                <hr><label>Checkboxes:</label>
+                <div class="btn-group" ng-model="button.checkbox" data-bs-checkbox-group>
+                    <label class="btn btn-default"><input type="checkbox" value="left"> Left</label>
+                    <label class="btn btn-default"><input type="checkbox" value="middle"> Middle</label>
+                    <label class="btn btn-default"><input type="checkbox" value="right"> Right</label>
+                    <!-- Children get compiled by `bs-checkbox-group` to :
+        <label class="btn btn-default"><input type="checkbox" value="left" ng-model="button.checkbox.left" bs-checkbox> Left</label>
+        ...
+        -->
+                </div>
+
+                <hr><label>Radios:</label>
+                <div class="btn-group" ng-model="button.radio" data-bs-radio-group>
+                    <label class="btn btn-default"><input type="radio" class="btn btn-default" value="0"> First</label>
+                    <label class="btn btn-default"><input type="radio" class="btn btn-default" value="1"> Second</label>
+                    <label class="btn btn-default"><input type="radio" class="btn btn-default" value="2"> Third</label>
+                    <!-- Children get compiled by `bs-radio-group` to :
+        <label class="btn btn-default"><input type="radio" class="btn btn-default" value="left" ng-model="button.radio" bs-radio> Left</label>
+        ...
+        -->
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="row" ng-controller="SelectDemoCtrl">
+        <div class="col-md-4">
+            <h3 class="text-success">AangularStrap Select 的例子</h3>
+        </div>
+        <div class="col-md-8">
+            <div class="page-header">
+                <h1 id="selects">
+                    Selects <a class="small" href="//github.com/mgcrea/angular-strap/blob/master/src/select/select.js" target="_blank">select.js</a>
+                </h1>
+                <code>mgcrea.ngStrap.select</code>
+            </div>
+
+
+            <h2 id="selects-examples">Examples</h2>
+            <p>Add quick, dynamic select functionality with any form text input.</p>
+
+            <div class="callout callout-danger">
+                <h4>Plugin dependency</h4>
+                <p>Selects require the <a href="#tooltips">tooltip module</a> and <a href="//github.com/mgcrea/angular-strap/blob/master/src/helpers/parse-options.js" target="_blank">parseOptions helper</a> module to be loaded.</p>
+            </div>
+
+            <h3>Live demo <a class="small edit-plunkr" data-module-name="mgcrea.ngStrapDocs" data-content-html-url="select/docs/select.demo.html" data-content-js-url="select/docs/select.demo.js" ng-plunkr data-title="edit in plunker" data-placement="right" data-bs-tooltip></a></h3>
+            <pre class="bs-example-scope">$scope.selectedIcon = {{ !selectedIcon ? '""' : selectedIcon}};
+$scope.selectedIcons = {{selectedIcons}};
+$scope.icons = {{icons}};
+</pre>
+            <div class="bs-example" style="padding-bottom: 24px;" data-append-source>
+
+                <label>Single select:&nbsp;</label>
+                <button type="button" class="btn btn-default" ng-model="selectedIcon" ng-change="bb()" data-html="1" data-bs-options="icon.value as icon.label for icon in icons" data-bs-select>
+                    Action <span class="caret"></span>
+                </button>
+                <hr>
+                <label>Multiple select:&nbsp;</label>
+                <button type="button" class="btn btn-default" ng-model="selectedIcons" ng-change="aa()" data-html="1" data-multiple="1" data-animation="am-flip-x" data-bs-options="icon.value as icon.label for icon in icons" data-bs-select>
+                    Action <span class="caret"></span>
+                </button>
+            </div>
+
+
+            <h2 id="selects-usage">Usage</h2>
+            <p>Append a <code>bs-select</code>attribute to any element to enable the directive.</p>
+            <p>Available items are specified using the <code>bs-options</code> attribute. This attribute uses AngularJS <a href="https://docs.angularjs.org/api/ng/directive/ngOptions" target="_blank">ngOptions</a> array data source syntax.</p>
+            <div class="callout callout-danger">
+                <h4>Breaking Change</h4>
+                <p>If you are using AngularStrap prior to version 2.2.0, please use <code>ng-options</code> instead of <code>bs-options</code>.</p>
+            </div>
+            <div class="callout callout-info">
+                <h4>The module exposes a <code>$select</code>service</h4>
+                <p>Available for programmatic use (mainly in directives as it requires a DOM element).</p>
+                <div class="highlight">
+                    <pre>
+                        <code class="javascript" data-highlight-block>
+          var mySelect = $select(element, controller);
+        </code>
+      </pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="row" ng-controller="TabDemoCtrl">
+        <div class="col-md-4">
+            <h3 class="text-success">AangularStrap Tab 的例子</h3>
+        </div>
+        <div class="col-md-8">
+            <div class="page-header">
+                <h1 id="tabs">
+                    Tabs <a class="small" href="//github.com/mgcrea/angular-strap/blob/master/src/tab/tab.js" target="_blank">tab.js</a>
+                </h1>
+                <code>mgcrea.ngStrap.tab</code>
+            </div>
+
+            <h2 id="tabs-examples">Examples</h2>
+            <p>Add quick, dynamic tab functionality to transition through panes of local content.</p>
+
+            <h3>Live demo <a class="small edit-plunkr" data-module-name="mgcrea.ngStrapDocs" data-content-html-url="tab/docs/tab.demo.html" data-content-js-url="tab/docs/tab.demo.js" ng-plunkr data-title="edit in plunker" data-placement="right" data-bs-tooltip>clog.info</a></h3>
+            <pre class="bs-example-scope">$scope.tabs = {{tabs | json}};
+                   $scope.tabs.activeTab = "{{ tabs.activeTab }}";
+            </pre>
+            <div class="bs-example" data-append-source>
+                <div class="btn btn-default" ng-click="toggleThirdTab()">
+                    {{ tabs[2].disabled ? 'Enable' : 'Disable' }} third tab
+                </div>
+                <div class="btn btn-default" ng-click="tabs.activeTab='Profile'">
+                    Select "Profile" tab
+                </div>
+                <hr />
+                <!-- bsActivePane is optional -->
+                <div data-bs-active-pane="tabs.activeTab" data-bs-tabs>
+                    <div ng-repeat="tab in tabs" title="{{ tab.title }}" name="{{ tab.title }}" disabled="{{ tab.disabled }}" ng-bind="tab.content" data-bs-pane>
+                    </div>
+                </div>
+            </div>
+            <div class="bs-example" style="padding-bottom: 24px;" data-append-source>
+                <!-- control a tab with bsActivePane binding -->
+                <div class="btn-group" ng-model="tabs.activeTab" data-bs-radio-group>
+                    <label class="btn btn-default" ng-repeat="tab in tabs">
+                        <input type="radio" class="btn btn-default" value="{{ $index }}">Tab n°{{ $index + 1 }}
+                    </label>
+                </div>
+                <div class="btn btn-default" ng-click="pushTab()">Add new tab</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="row" ng-controller="CollapseDemoCtrl">
+        <div class="col-md-4">
+            <h3 class="text-success">AangularStrap Collapse 的例子</h3>
+        </div>
+        <div class="col-md-8">
+            <div class="page-header">
+                <h1 id="collapses">
+                    Collapses <a class="small" href="//github.com/mgcrea/angular-strap/blob/master/src/collapse/collapse.js" target="_blank">collapse.js</a>
+                </h1>
+                <code>mgcrea.ngStrap.collapse</code>
+            </div>
+
+            <h2 id="collapses-examples">Examples</h2>
+            <p>Add quick, dynamic collapsable functionality to transition through panels of local content.</p>
+
+            <h3>Live demo <a class="small edit-plunkr" data-module-name="mgcrea.ngStrapDocs" data-content-html-url="collapse/docs/collapse.demo.html" data-content-js-url="collapse/docs/collapse.demo.js" ng-plunkr data-title="edit in plunker" data-placement="right" data-bs-tooltip>clog.info</a></h3>
+            <pre class="bs-example-scope">$scope.panels = {{panels | json}};
+$scope.panels.activePanel = {{ panels.activePanel }};
+  </pre>
+            <div class="bs-example" data-append-source>
+                <!-- ngModel is optional -->
+                <div class="panel-group" ng-model="panels.activePanel" role="tablist" aria-multiselectable="true" data-bs-collapse>
+                    <div class="panel panel-default" ng-repeat="panel in panels">
+                        <div class="panel-heading" role="tab">
+                            <h4 class="panel-title">
+                                <a data-bs-collapse-toggle>
+                                    {{ panel.title }}
+                                </a>
+                            </h4>
+                        </div>
+                        <div class="panel-collapse" role="tabpanel" data-bs-collapse-target>
+                            <div class="panel-body">
+                                {{ panel.body }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bs-example" style="padding-bottom: 24px;" data-append-source>
+                <!-- control a collapse panel with ngModel -->
+                <div class="btn-group" ng-model="panels.activePanel" data-bs-radio-group>
+                    <label class="btn btn-default" ng-repeat="panel in panels">
+                        <input type="radio" class="btn btn-default" value="{{ $index }}">Panel n°{{ $index + 1 }}
+                    </label>
+                </div>
+                <div class="btn btn-default" ng-click="pushPanel()">Add new panel</div>
+            </div>
+
+            <h3>Multiple open panels sample</h3>
+            <p>By using the <code>allowMultiple</code> option, you can have multiple open panels at the same time. When using <code>allowMultiple</code> option, <code>ngModel</code> binds to an array with the open panel indexes.</p>
+            <pre class="bs-example-scope">$scope.multiplePanels.activePanels = {{ multiplePanels.activePanels }};
+  </pre>
+            <div class="bs-example" data-append-source>
+                <!-- ngModel is optional -->
+                <div class="panel-group" ng-model="multiplePanels.activePanels" data-allow-multiple="true" role="tablist" aria-multiselectable="true" data-bs-collapse>
+                    <div class="panel panel-default" ng-repeat="panel in panels">
+                        <div class="panel-heading" role="tab">
+                            <h4 class="panel-title">
+                                <a data-bs-collapse-toggle>
+                                    {{ panel.title }}
+                                </a>
+                            </h4>
+                        </div>
+                        <div class="panel-collapse" role="tabpanel" data-bs-collapse-target>
+                            <div class="panel-body">
+                                {{ panel.body }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="row" ng-controller="DropdownDemoCtrl">
+        <div class="col-md-4">
+            <h3 class="text-success">AangularStrap Dropdown 的例子</h3>
+        </div>
+        <div class="col-md-8">
+            <div class="page-header">
+                <h1 id="dropdowns">
+                    Dropdowns <a class="small" href="//github.com/mgcrea/angular-strap/blob/master/src/dropdown/dropdown.js" target="_blank">dropdown.js</a>
+                </h1>
+                <code>mgcrea.ngStrap.dropdown</code>
+            </div>
+
+
+            <h2 id="dropdowns-examples">Examples</h2>
+            <p>Add dropdown menus to nearly anything with this simple plugin, including the navbar, tabs, and pills.</p>
+            <p>Append a <code>bs-dropdown</code> attribute to any element to enable the plugin.</p>
+
+            <div class="callout callout-danger">
+                <h4>Plugin dependency</h4>
+                <p>Dropdowns require the <a href="#tooltips">tooltip plugin</a> to be included.</p>
+            </div>
+
+            <h3>Live demo <a class="small edit-plunkr" data-module-name="mgcrea.ngStrapDocs" data-content-html-url="dropdown/docs/dropdown.demo.html" data-content-js-url="dropdown/docs/dropdown.demo.js" ng-plunkr data-title="edit in plunker" data-placement="right" data-bs-tooltip>clog.info</a></h3>
+            <pre class="bs-example-scope">$scope.dropdown = {{dropdown | json}};</pre>
+            <div class="bs-example" style="padding-bottom: 24px;" data-append-source>
+
+                <!-- Button to trigger a default dropdown from an array ($scope.dropdown) [{text:'foo', href:'', click:''}, ...] -->
+                <button type="button" class="btn btn-lg btn-primary" data-animation="am-flip-x" data-bs-dropdown="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Click to toggle dropdown
+                    <br />
+                    <small>(using an object)</small>
+                </button>
+
+                <!-- Inlined sibling dropdown -->
+                <button type="button" class="btn btn-lg btn-primary" data-animation="am-flip-x" data-bs-dropdown aria-haspopup="true" aria-expanded="false">
+                    Click to toggle dropdown
+                    <br />
+                    <small>(using inlined sibling template)</small>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#anotherAction"><i class="fa fa-download"></i>&nbsp;Some action</a></li>
+                    <li><a ng-click="$alert('Holy guacamole')"><i class="fa fa-globe"></i>&nbsp;Display an alert</a></li>
+                    <li ng-repeat="i in ['Foo', 'Bar', 'Baz']"><a ng-href="#action{{i}}"><i class="fa fa-chevron-right"></i>&nbsp;{{i}}</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="row">
+        <div class="col-md-4">
+           <h3 class="text-success">AangularStrap Scrollspy 的例子</h3>
+        </div>
+        <div class="col-md-8">
+            <div class="page-header">
+                <h1 id="scrollspy">
+                    Scrollspy <a class="small" href="//github.com/mgcrea/angular-strap/blob/master/src/scrollspy/scrollspy.js" target="_blank">scrollspy.js</a>
+                </h1>
+                <code>mgcrea.ngStrap.scrollspy</code>
+            </div>
+
+            <h2 id="scrollspy-examples">Examples</h2>
+            <p>The subnavigation on the left is a live demo of the scrollspy plugin.</p>
+
+            <div class="callout callout-warning">
+                <h4>Plugin dependency</h4>
+                <p>Scrollspy require the <a href="//github.com/mgcrea/angular-strap/blob/master/src/helpers/dimensions.js" target="_blank">helpers.dimensions</a> module to be loaded.</p>
+            </div>
+
+            <div class="highlight">
+                <pre>
+                <code class="html" data-highlight-block>
+        &lt;ul class="nav bs-sidenav"&gt;
+          &lt;li data-target="#modals" bs-scrollspy&gt;
+            &lt;a href="#modals"&gt;Modal&lt;/a&gt;
+            &lt;ul class="nav"&gt;
+              &lt;li data-target="#modals-examples" bs-scrollspy&gt;&lt;a href="#modals-examples"&gt;Examples&lt;/a&gt;&lt;/li&gt;
+              &lt;li data-target="#modals-usage" bs-scrollspy&gt;&lt;a href="#modals-usage"&gt;Usage&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+        <!-- Alternatively, you can use the short following equivalent short markup -->
+        &lt;ul class="nav bs-sidenav" bs-scrollspy-list&gt;
+          &lt;li&gt;
+            &lt;a href="#modals"&gt;Modal&lt;/a&gt;
+            &lt;ul class="nav"&gt;
+              &lt;li&gt;&lt;a href="#modals-examples"&gt;Examples&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href="#modals-usage"&gt;Usage&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      </code>
+    </pre>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

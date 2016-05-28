@@ -1,0 +1,69 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html ng-app="myAngularuiApp">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Angular UI Web</title>
+    <link href="@Url.Content("~/Content/bootstrap/css/bootstrap.min.css")" type="text/css" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/bootstrap-additions/dist/bootstrap-additions.min.css")" type="text/css" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/font-awesome/css/font-awesome.min.css")" type="text/css" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/angular-ngtable/dist/docs.css")" type="text/css" rel="stylesheet" />
+
+    <link href="@Url.Content("~/Content/main.css")" type="text/css" rel="stylesheet" />
+
+    <script src="@Url.Content("~/Scripts/jquery-2.1.4.js")"></script>
+
+    <script src="@Url.Content("~/Content/underscore/underscore-min.js")"></script>
+    <script src="@Url.Content("~/Content/bootstrap/js/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/angular.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/angular-animate.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/angular-sanitize.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/angular-ui/ui-bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/angular-ui/ui-bootstrap-tpls.min.js")"></script>
+
+    <script src="@Url.Content("~/Content/angularui/ui-utils/mask.min.js")"></script>
+    <script src="@Url.Content("~/Content/angularui/ui-utils/event.min.js")"></script>
+
+    <script src="@Url.Content("~/Scripts/controller/myAngularuiApp.js")"></script>
+</head>
+<body>
+    <div class="container-fluid" ng-controller="maskCtrl">
+        <div class="row spacer-sm">
+            <label class="col-xs-5 text-right" for="fname">FirstName:</label>
+            <input id="fname" ng-model="person.firstName"
+                   data-ui-event="{ focus:'focusCallback()',blur:'blurCallback()'
+                   }" class="col-xs-6" type="text" />
+        </div>
+        <div class="row spacer-sm">
+            <label class="col-xs-5 text-right" for="lname">LastName:</label>
+            <input id="fname" ng-model="person.lastName"
+                   data-ui-keydown="{112:'helpKeyDown($event)'}" class=" col-xs-6" type="text" />
+        </div>
+        <div class="row spacer-sm">
+            <label class="col-xs-5 text-right" for="phone">Phone:</label>
+            <input id="phone" ng-model="person.phone" data-ui-mask="{{mask}}" class="col-xs-6" type="tel" />
+        </div>
+        <div class="row spacer-sm">
+            <div class="col-xs-9 col-xs-offset-2" ng-show="helpText">
+                <label class="text-primary">{{helpText}}</label>
+            </div>
+        </div>
+        <div class="row spacer-lg">
+            <pre class="col-xs-11" ng-style="modelStatus()">
+                <code>{{getModel()}}</code>
+            </pre>
+        </div>
+    </div>
+    <div class="row" ng-controller="calenderCtrl">
+        <div class="col-md-4">
+            <div data-calendar data-selecteddate="date"></div>
+            <p>date: ({{date}})</p>
+        
+        </div>
+    </div>
+</body>
+</html>
